@@ -18,7 +18,28 @@ This repository showcases a well-structured **Selenium Automation Framework** fo
 
 ## 📁 Project Structure
 
-<pre> src/ ├── main/java/com/qa/opencart/ │ ├── constants/ # Framework-wide constants │ ├── errors/ # Custom error messages or enums │ ├── exceptions/ # Custom exception handling │ ├── factory/ # Driver factory and browser init logic │ ├── listeners/ # TestNG Listeners for logging/screenshots │ ├── pages/ # Page classes following POM │ └── utils/ # Utilities like ExcelReader, JSExecutor, etc. │ ├── test/java/com/qa/opencart/ │ ├── base/ # Base test setup and teardown │ └── tests/ # Test classes for all features │ ├── resources/ │ ├── config/ # config.properties for env & URLs │ ├── testdata/ # Test data in JSON/Excel/CSV │ └── testrunners/ # Chaintest runner files │ ├── chain.properties # Chaintest configuration ├── .gitignore # Files to exclude from Git └── pom.xml # Maven dependencies </pre>
+src/
+├── main/java/com/qa/opencart/
+│   ├── constants/          # Framework-wide constants
+│   ├── errors/             # Custom error messages or enums
+│   ├── exceptions/         # Custom exception handling
+│   ├── factory/            # Driver factory and browser initialization logic
+│   ├── listeners/          # TestNG listeners for logging, screenshots, etc.
+│   ├── pages/              # Page Object Model (POM) classes
+│   └── utils/              # Utility classes (ExcelReader, JSExecutor, etc.)
+│
+├── test/java/com/qa/opencart/
+│   ├── base/               # Test base class for setup and teardown
+│   └── tests/              # Feature test classes
+│
+├── resources/
+│   ├── config/             # Configuration files (e.g., config.properties)
+│   ├── testdata/           # Test data files (JSON, Excel, CSV)
+│   └── testrunners/        # Chaintest runner files
+
+├── chaintest.properties    # Chaintest configuration
+├── .gitignore              # Git ignore rules
+├── pom.xml                 # Maven project descriptor
 
 ## How to Run Tests
 
