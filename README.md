@@ -20,8 +20,8 @@ This repository showcases a well-structured **Selenium Automation Framework** fo
 
 src/
 ├── main/java/com/qa/opencart/
- constants/ # Framework-wide constants
- errors/ # Custom error messages or enums
+ ├── constants/ # Framework-wide constants
+ ├── errors/ # Custom error messages or enums
  ├── exceptions/ # Custom exception handling
  ├── factory/ # Driver factory and browser init logic
  ├── listeners/ # TestNG Listeners for logging/screenshots
