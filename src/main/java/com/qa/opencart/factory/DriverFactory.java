@@ -6,6 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -23,6 +25,8 @@ public class DriverFactory {
 	OptionsManager optionManager;
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 	public static String highlight;
+	
+	public static final Logger log = LogManager.getLogger(DriverFactory.class); // you can generate warning message, info, fatal or error.
 /*/
  * here, the entire prop ref is passed, get the browser name by passing the key value.
  *these are toggle features - headless, incognito, highlight features in the config properties.
@@ -30,8 +34,11 @@ public class DriverFactory {
 
 	public WebDriver initDriver(Properties prop) {
 
+		log.info("properties: "+ prop);
 		String browserName = prop.getProperty("browser");
-		System.out.println("browser name is :" + browserName);
+		//System.out.println("browser name is :" + browserName);
+		log.info("browser name is :" + browserName);
+		
 		optionManager = new OptionsManager(prop);
 		
 		highlight = prop.getProperty("highlight").trim();
@@ -52,7 +59,8 @@ public class DriverFactory {
 			driver = new SafariDriver();
 			break;
 		default:
-			System.out.println("Please provide valid browser name...");	
+			//System.out.println("Please provide valid browser name...");
+			log.error("Please provide valid browser name...");
 			throw new BrowserException("====INVALID BROWSER===");
 		}
 
@@ -103,12 +111,14 @@ public class DriverFactory {
 	public Properties initProp() {
 
 		String envName = System.getProperty("env");
-		System.out.println("Running the test on this environment: "+ envName);
+		//System.out.println("Running the test on this environment: "+ envName);
+		log.info("Running the test on this environment: "+ envName);
 		FileInputStream ip = null;
 		prop = new Properties();
 		try {
 		if(envName == null) {
-			System.out.println("env is null hence , running the test on qa envmnt.");
+			//System.out.println("env is null hence , running the test on qa envmnt.");
+			log.warn("env is null hence , running the test on qa envmnt.");
 			ip = new FileInputStream("./src/test/resources/config/qa.config.properties");
 		}
 		else {
@@ -130,6 +140,7 @@ public class DriverFactory {
 				ip = new FileInputStream("./src/test/resources/config/config.properties");
 				break;
 			default:
+				log.error("invalid envname:" + envName);
 				break;
 			}
 			

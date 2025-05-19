@@ -17,7 +17,7 @@ public class LoginPage {
 	private final By email = By.id("input-email");
 	private final By password = By.id("input-password");
 	private final By LoginButton = By.xpath("//input[@value='Login']");
-	private final By forgotPasswordLink = By.linkText("Forgotten Password11");
+	private final By forgotPasswordLink = By.linkText("Forgotten Password");
 	private final By registerLink = By.linkText("Register");
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
