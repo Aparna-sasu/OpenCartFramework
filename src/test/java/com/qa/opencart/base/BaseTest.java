@@ -51,11 +51,11 @@ public class BaseTest {
 		loginPage = new LoginPage(driver);
 	}
 	
-	@BeforeMethod
-	public void beforeMethod(ITestContext result) {
-		LogUtil.info("-----starting test case----"+ result.getName());
-		
-	}
+//	@BeforeMethod
+//	public void beforeMethod(ITestContext result) {
+//		LogUtil.info("-----starting test case----"+ result.getName());
+//		
+//	}
 	
 	@AfterMethod // will run after each @test method
 	public void attachScreenshot(ITestResult result) {
@@ -64,7 +64,7 @@ public class BaseTest {
 			
 			ChainTestListener.embed(DriverFactory.getScreenshotFile(), "image/png");
 		}
-		LogUtil.info("-----ending test case----"+ result.getMethod().getMethodName());
+		//LogUtil.info("-----ending test case----"+ result.getMethod().getMethodName());
 	}
 	@AfterTest
 	public void tearDown() {
