@@ -40,7 +40,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/Aparna-sasu/OpenCartFramework.git'
-                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
+                    sh "mvn clean test -Dsurefire.suiteXmlFiles=/Users/appu/eclipse-workspace/Dec2024POMSeries/src/test/resources/testrunners/testng_regression.xml -Denv=qa"
                     
                 }
             }
@@ -84,7 +84,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/Aparna-sasu/OpenCartFramework.git'
-                    sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=stage"
+                    sh "mvn clean test -Dsurefire.suiteXmlFiles=/Users/appu/eclipse-workspace/Dec2024POMSeries/src/test/resources/testrunners/testng_sanity.xml -Denv=stage"
                     
                 }
             }
