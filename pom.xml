@@ -122,7 +122,6 @@
 				<configuration>
 					<forkCount>3</forkCount>
 					<reuseForks>true</reuseForks>
-				    <testFailureIgnore>true</testFailureIgnore>
     
 					<suiteXmlFiles>
 						<!--<suiteXmlFile>src/test/resources/testrunners/testng_regression.xml</suiteXmlFile>-->
