@@ -5,14 +5,15 @@ pipeline
     tools{
         maven 'maven'
         }
-    stages {
-        stage('Clone') {
+        
+    stages 
+    {
+		stage('Clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/Aparna-sasu/OpenCartFramework.git'
             }
         }
-    stages 
-    {
+        
         stage('Build') 
         {
             steps
