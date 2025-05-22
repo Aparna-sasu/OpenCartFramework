@@ -5,22 +5,15 @@ pipeline
     tools{
         maven 'maven'
         }
-        
+
     stages 
     {
-		stage('Clone') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Aparna-sasu/OpenCartFramework.git'
-            }
-        }
-        
         stage('Build') 
         {
             steps
             {
                  git 'https://github.com/jglick/simple-maven-project-with-tests.git'
                  sh "mvn -Dmaven.test.failure.ignore=true clean package"
-                //echo("build done")
             }
             post 
             {
@@ -28,7 +21,6 @@ pipeline
                 {
                     junit '**/target/surefire-reports/TEST-*.xml'
                     archiveArtifacts 'target/*.jar'
-                    //echo("success")
                 }
             }
         }
@@ -49,6 +41,7 @@ pipeline
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/Aparna-sasu/OpenCartFramework.git'
                     sh "mvn clean test -Dsurefire.suiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
+                    
                 }
             }
         }
