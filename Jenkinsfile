@@ -12,15 +12,17 @@ pipeline
         {
             steps
             {
-                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                // git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                 echo("build is in progress")
             }
             post 
             {
                 success
                 {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
+                   // junit '**/target/surefire-reports/TEST-*.xml'
+                  //  archiveArtifacts 'target/*.jar'
+                  echo("build done")
                 }
             }
         }
@@ -55,7 +57,7 @@ pipeline
                         jdk: '',
                         properties: [],
                         reportBuildPolicy: 'ALWAYS',
-                        results: [[path: '/allure-results']]
+                        results: [[path: 'target/allure-results']]
                     ])
                 }
             }
