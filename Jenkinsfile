@@ -66,22 +66,15 @@ pipeline
             }
         }
         
-       stage('Run Tests') {
-    steps {
-        sh 'mvn clean test'
-        // You can debug here too
-        sh 'ls -l target/chaintest'
-    }
-}
  
         stage('Publish ChainTest Report'){
             steps{
-                     publishHTML([allowMissing: false,
+                     publishHTML([reportDir: 'target/chaintest',
+                                  reportFiles: 'Index.html',
+                                  reportName: 'HTML Regression ChainTest Report', 
+					 	          allowMissing: false,
                                   alwaysLinkToLastBuild: false, 
                                   keepAll: true, 
-                                  reportDir: 'target/chaintest', 
-                                  reportFiles: 'Index.html', 
-                                  reportName: 'HTML Regression ChainTest Report', 
                                   reportTitles: ''])
             }
         }
