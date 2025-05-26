@@ -12,7 +12,7 @@ pipeline
         {
             steps
             {
-                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                 git branch: 'main', url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
                  sh "mvn -Dmaven.test.failure.ignore=true clean package"
                  echo("build is in progress")
             }
@@ -94,7 +94,7 @@ pipeline
         stage('Sanity Automation Test') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                    git 'https://github.com/Aparna-sasu/OpenCartFramework.git'
+                    git branch: 'main', url: 'https://github.com/Aparna-sasu/OpenCartFramework.git'
                     sh "mvn clean test -DsuiteXmlFiles=src/test/resources/testrunners/testng_sanity.xml -Denv=stage"
                     
                 }
