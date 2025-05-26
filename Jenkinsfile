@@ -102,7 +102,7 @@ pipeline
                      publishHTML([allowMissing: false,
                                   alwaysLinkToLastBuild: false, 
                                   keepAll: true, 
-                                  reportDir: '/Users/appu/eclipse-workspace/Dec2024POMSeries/target/chaintest', 
+                                  reportDir: 'target/chaintest', 
                                   reportFiles: 'Index.html', 
                                   reportName: 'HTML Sanity ChainTest Report', 
                                   reportTitles: ''])
