@@ -43,9 +43,16 @@ pipeline
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     git 'https://github.com/Aparna-sasu/OpenCartFramework.git'
                     sh "mvn clean test -DsuiteXmlFile=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
+                    sh "find target -type f"
                     
                 }
             }
+            post {
+        always {
+            // ✅ Archive TestNG results here
+            junit 'target/surefire-reports/TEST-*.xml'
+        }
+    }
         }
                 
      
