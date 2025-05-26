@@ -49,12 +49,6 @@ pipeline
                     
                 }
             }
-            post {
-        always {
-            // ✅ Archive TestNG results here
-            junit 'target/surefire-reports/TEST-*.xml'
-        }
-    }
         }
                 
      
