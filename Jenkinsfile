@@ -12,9 +12,9 @@ pipeline
         {
             steps
             {
-                // git 'https://github.com/jglick/simple-maven-project-with-tests.git'
-                 //sh "mvn -Dmaven.test.failure.ignore=true clean package"
-                 echo("build is in progress")
+                 git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
+                 //echo("build is in progress")
             }
             post 
             {
