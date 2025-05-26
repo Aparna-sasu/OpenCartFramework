@@ -42,7 +42,7 @@ pipeline
         stage('Regression Automation Tests') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-					cleanWs() // Clean workspace
+					
                     git 'https://github.com/Aparna-sasu/OpenCartFramework.git'
                     sh "mvn clean test -DsuiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
                     sh "find target -type f"
