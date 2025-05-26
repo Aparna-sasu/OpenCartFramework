@@ -43,7 +43,7 @@ pipeline
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
 					
-                    git 'https://github.com/Aparna-sasu/OpenCartFramework.git'
+                    git branch: 'main', url: 'https://github.com/Aparna-sasu/OpenCartFramework.git'
                     sh "mvn clean test -DsuiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
                     sh "find target -type f"
                     
