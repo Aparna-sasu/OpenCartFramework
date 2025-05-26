@@ -14,14 +14,15 @@ pipeline
             {
                  git 'https://github.com/jglick/simple-maven-project-with-tests.git'
                  sh "mvn -Dmaven.test.failure.ignore=true clean package"
-                 //echo("build is in progress")
+                 echo("build is in progress")
             }
             post 
             {
                 success
                 {
-                   // junit '**/target/surefire-reports/TEST-*.xml'
-                  //  archiveArtifacts 'target/*.jar'
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                   archiveArtifacts 'target/*.jar'
+                   cleanWs()
                   echo("build done")
                 }
             }
@@ -41,6 +42,7 @@ pipeline
         stage('Regression Automation Tests') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+					cleanWs() // Clean workspace
                     git 'https://github.com/Aparna-sasu/OpenCartFramework.git'
                     sh "mvn clean test -DsuiteXmlFiles=src/test/resources/testrunners/testng_regression.xml -Denv=qa"
                     sh "find target -type f"
